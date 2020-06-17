@@ -2,8 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-import static java.time.LocalDateTime.now;
+import java.util.Objects;
 
 public class Statement {
 
@@ -11,10 +10,10 @@ public class Statement {
     private final Operation operation;
     private final LocalDateTime operationDate;
 
-    public Statement(BigDecimal balance, Operation operation) {
+    public Statement(BigDecimal balance, Operation operation, LocalDateTime operationDate) {
         this.balance = balance;
         this.operation = operation;
-        this.operationDate = now();
+        this.operationDate = operationDate;
     }
 
     public BigDecimal getBalance() {
@@ -27,5 +26,20 @@ public class Statement {
 
     public LocalDateTime getOperationDate() {
         return operationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Statement statement = (Statement) o;
+        return Objects.equals(balance, statement.balance) &&
+                Objects.equals(operation, statement.operation) &&
+                Objects.equals(operationDate, statement.operationDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(balance, operation, operationDate);
     }
 }

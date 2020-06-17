@@ -4,8 +4,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 
 import static java.math.BigDecimal.*;
+import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -15,13 +17,13 @@ class AccountDepositShould {
 
     @BeforeEach
     public void init() {
-        account = new Account(TEN);
+        account = new Account(TEN, new ArrayList<>());
         depositAmount = valueOf(1.25);
     }
 
     @Test
     void increase_balance() {
-        account.deposit(depositAmount);
+        account.deposit(depositAmount, now());
 
         assertThat(account.getBalance()).isEqualTo(TEN.add(depositAmount));
     }
@@ -29,12 +31,12 @@ class AccountDepositShould {
     @Test
     void be_refused_for_a_negative_amount() {
         assertThatExceptionOfType(NegativeOrZeroOperationException.class)
-                .isThrownBy(() -> account.deposit(depositAmount.negate()));
+                .isThrownBy(() -> account.deposit(depositAmount.negate(), now()));
     }
 
     @Test
     void be_refused_for_a_zero_amount() {
         assertThatExceptionOfType(NegativeOrZeroOperationException.class)
-                .isThrownBy(() -> account.deposit(ZERO));
+                .isThrownBy(() -> account.deposit(ZERO, now()));
     }
 }
