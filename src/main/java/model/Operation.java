@@ -6,7 +6,7 @@ import static java.math.BigDecimal.ZERO;
 
 abstract class Operation {
 
-    protected BigDecimal operationAmount;
+    protected final BigDecimal operationAmount;
 
     public Operation(BigDecimal operationAmount) {
         if (operationAmount.compareTo(ZERO) <= 0) {
@@ -16,5 +16,5 @@ abstract class Operation {
         this.operationAmount = operationAmount;
     }
 
-    public abstract BigDecimal execute(BigDecimal operationAmount);
+    public abstract BigDecimal execute(Statement statement);
 }

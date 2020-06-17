@@ -10,13 +10,13 @@ public class Account {
     }
 
     public void deposit(BigDecimal depositAmount) {
-        Deposit deposit = new Deposit(depositAmount);
-        balance = deposit.execute(balance);
+        Operation deposit = new Deposit(depositAmount);
+        balance = deposit.execute(new Statement(balance, deposit));
     }
 
     public void withdrawal(BigDecimal withdrawalAmount) {
-        Withdrawal withdrawal = new Withdrawal(withdrawalAmount);
-        balance = withdrawal.execute(balance);
+        Operation withdrawal = new Withdrawal(withdrawalAmount);
+        balance = withdrawal.execute(new Statement(balance, withdrawal));
     }
 
     public BigDecimal getBalance() {

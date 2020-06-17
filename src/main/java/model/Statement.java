@@ -25,7 +25,7 @@ public class Statement {
         return operation;
     }
 
-    public LocalDateTime getOpertionDate() {
+    public LocalDateTime getOperationDate() {
         return operationDate;
     }
 }

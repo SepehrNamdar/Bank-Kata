@@ -9,7 +9,7 @@ class Withdrawal extends Operation {
     }
 
     @Override
-    public BigDecimal execute(BigDecimal balance) {
-        return balance.subtract(this.operationAmount);
+    public BigDecimal execute(Statement statement) {
+        return statement.getBalance().subtract(this.operationAmount);
     }
 }
