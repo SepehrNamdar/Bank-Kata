@@ -20,11 +20,14 @@ public class AccountHistoryShould {
     void print() {
         Account account = new Account(TEN, new ArrayList<>());
         BigDecimal depositAmount = valueOf(1.25);
+        BigDecimal withdrawalAmount = valueOf(2.99);
 
         account.deposit(depositAmount, now);
+        account.withdrawal(withdrawalAmount, now);
 
         List<Statement> expected = new ArrayList<>();
         expected.add(new Statement(TEN, new Deposit(depositAmount), now));
+        expected.add(new Statement(valueOf(11.25), new Withdrawal(withdrawalAmount), now));
 
         assertThat(account.getOperationsHistory()).isEqualTo(expected);
     }

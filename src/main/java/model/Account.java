@@ -22,7 +22,9 @@ public class Account {
 
     public void withdrawal(BigDecimal withdrawalAmount, LocalDateTime withdrawalDate) {
         Operation withdrawal = new Withdrawal(withdrawalAmount);
-        balance = withdrawal.execute(new Statement(balance, withdrawal, withdrawalDate));
+        Statement statement = new Statement(balance, withdrawal, withdrawalDate);
+        operationsHistory.add(statement);
+        balance = withdrawal.execute(statement);
     }
 
     public BigDecimal getBalance() {
