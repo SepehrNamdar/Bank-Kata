@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 import static java.math.BigDecimal.ZERO;
 
-public abstract class Operation {
+abstract class Operation {
 
     protected BigDecimal operationAmount;
 

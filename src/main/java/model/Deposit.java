@@ -2,7 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 
-public class Deposit extends Operation {
+class Deposit extends Operation {
 
     public Deposit(BigDecimal depositAmount) {
         super(depositAmount);
