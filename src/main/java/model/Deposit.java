@@ -9,7 +9,7 @@ class Deposit extends Operation {
     }
 
     @Override
-    public BigDecimal execute(BigDecimal balance) {
-        return balance.add(operationAmount);
+    public BigDecimal execute(Statement statement) {
+        return statement.getBalance().add(operationAmount);
     }
 }
