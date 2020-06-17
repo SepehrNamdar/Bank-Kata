@@ -2,6 +2,8 @@ package model;
 
 import java.math.BigDecimal;
 
+import static java.math.BigDecimal.ZERO;
+
 public class Account {
     private BigDecimal balance;
 
@@ -10,7 +12,11 @@ public class Account {
     }
 
     public void deposit(BigDecimal depositAmount) {
-        balance = balance.add(depositAmount);
+        if (depositAmount.compareTo(ZERO) > 0) {
+            balance = balance.add(depositAmount);
+        } else {
+            throw new NegativeOrZeroOperationException();
+        }
     }
 
     public BigDecimal getBalance() {
