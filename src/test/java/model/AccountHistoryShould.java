@@ -32,13 +32,13 @@ public class AccountHistoryShould {
         assertThat(account.getOperationsHistory()).isEqualTo(expected);
     }
 
-/*    @Test
+    @Test
     public void print_an_existing_account() {
         BigDecimal withdrawalAmount = valueOf(2.99);
         ArrayList<Statement> previousOperations = new ArrayList<>();
         previousOperations.add(new Statement(TEN, new Withdrawal(withdrawalAmount), now));
-        Account account = new Account(TEN, previousOperations);
+        Account account = new Account(previousOperations);
 
-
-    }*/
+        assertThat(account.getBalance()).isEqualTo(valueOf(7.01));
+    }
 }

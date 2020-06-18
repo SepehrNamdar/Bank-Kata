@@ -9,14 +9,21 @@ public class Account {
     private BigDecimal balance;
     private final List<Statement> operationsHistory;
 
-    public Account(BigDecimal balance, List<Statement> operationsHistory) {
-        this.balance = balance;
-        this.operationsHistory = operationsHistory;
-    }
-
     public Account(BigDecimal balance) {
         this.balance = balance;
         this.operationsHistory = new ArrayList<>();
+    }
+
+    public Account(ArrayList<Statement> previousOperations) {
+        this.operationsHistory = previousOperations;
+        apply(previousOperations);
+    }
+
+    private void apply(ArrayList<Statement> previousOperations) {
+        previousOperations.forEach(o -> {
+            Operation operation = o.getOperation();
+            balance = operation.execute(o);
+        });
     }
 
     public void deposit(BigDecimal depositAmount, LocalDateTime depositDate) {
