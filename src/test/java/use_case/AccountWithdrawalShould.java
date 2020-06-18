@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 
 import static java.math.BigDecimal.*;
 import static java.time.LocalDateTime.now;
+import static model.Account.aNewAccount;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -18,7 +19,7 @@ public class AccountWithdrawalShould {
 
     @BeforeEach
     public void init() {
-        account = new Account(TEN);
+        account = aNewAccount(TEN);
         withdrawalAmount = valueOf(1.25);
     }
 

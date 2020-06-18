@@ -14,12 +14,20 @@ public class Account {
     private BigDecimal balance;
     private final List<Statement> operationsHistory;
 
-    public Account(BigDecimal balance) {
+    public static Account aNewAccount(BigDecimal balance) {
+        return new Account(balance);
+    }
+
+    private Account(BigDecimal balance) {
         this.balance = balance;
         this.operationsHistory = new ArrayList<>();
     }
 
-    public Account(ArrayList<Statement> previousOperations) {
+    public static Account anExistingAccount(ArrayList<Statement> previousOperations) {
+        return new Account(previousOperations);
+    }
+
+    private Account(ArrayList<Statement> previousOperations) {
         this.operationsHistory = previousOperations;
         apply(previousOperations);
     }

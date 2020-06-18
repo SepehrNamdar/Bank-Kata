@@ -15,6 +15,8 @@ import static java.math.BigDecimal.TEN;
 import static java.math.BigDecimal.valueOf;
 import static java.time.LocalDateTime.now;
 import static java.util.Collections.singletonList;
+import static model.Account.aNewAccount;
+import static model.Account.anExistingAccount;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class AccountHistoryShould {
@@ -23,7 +25,7 @@ public class AccountHistoryShould {
 
     @Test
     void print_a_new_account() {
-        Account account = new Account(TEN);
+        Account account = aNewAccount(TEN);
         BigDecimal depositAmount = valueOf(1.25);
         BigDecimal withdrawalAmount = valueOf(2.99);
 
@@ -43,7 +45,7 @@ public class AccountHistoryShould {
         Statement existingStatement = new Statement(TEN, new Withdrawal(withdrawalAmount), now);
         previousOperations.add(existingStatement);
 
-        Account account = new Account(previousOperations);
+        Account account = anExistingAccount(previousOperations);
 
         assertThat(account.getBalance()).isEqualTo(valueOf(7.01));
         List<Statement> expected = singletonList(existingStatement);
@@ -57,7 +59,7 @@ public class AccountHistoryShould {
         ArrayList<Statement> previousOperations = new ArrayList<>();
         Statement existingStatement = new Statement(TEN, new Withdrawal(withdrawalAmount), now);
         previousOperations.add(existingStatement);
-        Account account = new Account(previousOperations);
+        Account account = anExistingAccount(previousOperations);
 
         account.deposit(depositAmount, now);
         account.withdrawal(withdrawalAmount, now);
