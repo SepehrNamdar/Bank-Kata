@@ -1,5 +1,6 @@
 package model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
@@ -61,9 +62,10 @@ public class AccountHistoryShould {
         account.withdrawal(withdrawalAmount, now);
 
         assertThat(account.getBalance()).isEqualTo(valueOf(5.27));
-/*        List<Statement> expected = new ArrayList<>();
-        expected.add(new Statement(TEN, new Deposit(depositAmount), now));
-        expected.add(new Statement(valueOf(11.25), new Withdrawal(withdrawalAmount), now));
-        assertThat(account.getOperationsHistory()).isEqualTo(expected);*/
+        List<Statement> expected = new ArrayList<>();
+        expected.add(existingStatement);
+        expected.add(new Statement(valueOf(7.01), new Deposit(depositAmount), now));
+        expected.add(new Statement(valueOf(8.26), new Withdrawal(withdrawalAmount), now));
+        assertThat(account.getOperationsHistory()).isEqualTo(expected);
     }
 }
