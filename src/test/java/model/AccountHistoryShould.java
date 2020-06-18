@@ -47,4 +47,23 @@ public class AccountHistoryShould {
         List<Statement> expected = singletonList(existingStatement);
         assertThat(account.getOperationsHistory()).isEqualTo(expected);
     }
+
+    @Test
+    public void print_an_existing_account_with_new_operations() {
+        BigDecimal depositAmount = valueOf(1.25);
+        BigDecimal withdrawalAmount = valueOf(2.99);
+        ArrayList<Statement> previousOperations = new ArrayList<>();
+        Statement existingStatement = new Statement(TEN, new Withdrawal(withdrawalAmount), now);
+        previousOperations.add(existingStatement);
+        Account account = new Account(previousOperations);
+
+        account.deposit(depositAmount, now);
+        account.withdrawal(withdrawalAmount, now);
+
+        assertThat(account.getBalance()).isEqualTo(valueOf(5.27));
+/*        List<Statement> expected = new ArrayList<>();
+        expected.add(new Statement(TEN, new Deposit(depositAmount), now));
+        expected.add(new Statement(valueOf(11.25), new Withdrawal(withdrawalAmount), now));
+        assertThat(account.getOperationsHistory()).isEqualTo(expected);*/
+    }
 }
