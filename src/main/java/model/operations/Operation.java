@@ -1,11 +1,13 @@
-package model;
+package model.operations;
+
+import model.history.Statement;
 
 import java.math.BigDecimal;
 import java.util.Objects;
 
 import static java.math.BigDecimal.ZERO;
 
-abstract class Operation {
+public abstract class Operation {
 
     protected final BigDecimal operationAmount;
     protected OperationType operationType = OperationType.UNDEFINED;

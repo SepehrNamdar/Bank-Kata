@@ -1,4 +1,6 @@
-package model;
+package model.operations;
+
+import model.history.Statement;
 
 import java.math.BigDecimal;
 

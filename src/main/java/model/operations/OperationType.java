@@ -1,4 +1,4 @@
-package model;
+package model.operations;
 
 enum OperationType {
     WITHDRAWAL,

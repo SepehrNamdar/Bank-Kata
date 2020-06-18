@@ -1,5 +1,10 @@
 package model;
 
+import model.history.Statement;
+import model.operations.Deposit;
+import model.operations.Operation;
+import model.operations.Withdrawal;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

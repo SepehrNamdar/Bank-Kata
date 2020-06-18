@@ -1,4 +1,6 @@
-package model;
+package model.history;
+
+import model.operations.Operation;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

@@ -1,7 +1,7 @@
 package use_case;
 
 import model.Account;
-import model.NegativeOrZeroOperationException;
+import model.operations.NegativeOrZeroOperationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
