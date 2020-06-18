@@ -1,17 +1,16 @@
 package model.operations;
 
+import model.account.Amount;
 import model.history.Statement;
-
-import java.math.BigDecimal;
 
 public class Deposit extends Operation {
 
-    public Deposit(BigDecimal depositAmount) {
+    public Deposit(Amount depositAmount) {
         super(depositAmount);
     }
 
     @Override
-    public BigDecimal execute(Statement statement) {
+    public Amount execute(Statement statement) {
         return statement.getBalance().add(operationAmount);
     }
 

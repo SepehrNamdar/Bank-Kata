@@ -1,26 +1,30 @@
 package model.operations;
 
+import model.account.Amount;
 import model.history.Statement;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 import static java.math.BigDecimal.ZERO;
 
 public abstract class Operation {
 
-    protected final BigDecimal operationAmount;
+    protected final Amount operationAmount;
     protected OperationType operationType = OperationType.UNDEFINED;
 
-    public Operation(BigDecimal operationAmount) {
-        if (operationAmount.compareTo(ZERO) <= 0) {
+    public Operation(Amount operationAmount) {
+        if (isNegativeOrZero(operationAmount)) {
             throw new NegativeOrZeroOperationException();
         }
 
         this.operationAmount = operationAmount;
     }
 
-    public abstract BigDecimal execute(Statement statement);
+    private boolean isNegativeOrZero(Amount operationAmount) {
+        return operationAmount.getValue().compareTo(ZERO) <= 0;
+    }
+
+    public abstract Amount execute(Statement statement);
     protected abstract void setOperationType();
 
     @Override
