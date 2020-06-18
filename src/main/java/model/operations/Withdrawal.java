@@ -1,22 +1,23 @@
 package model.operations;
 
+import model.account.Amount;
 import model.history.Statement;
 
-import java.math.BigDecimal;
+import static model.operations.OperationType.WITHDRAWAL;
 
 public class Withdrawal extends Operation {
 
-    public Withdrawal(BigDecimal withdrawalAmount) {
+    public Withdrawal(Amount withdrawalAmount) {
         super(withdrawalAmount);
     }
 
     @Override
-    public BigDecimal execute(Statement statement) {
-        return statement.getBalance().subtract(this.operationAmount);
+    public Amount execute(Statement statement) {
+        return statement.getBalance().subtract(operationAmount);
     }
 
     @Override
     public void setOperationType() {
-        super.operationType = OperationType.WITHDRAWAL;
+        super.operationType = WITHDRAWAL;
     }
 }

@@ -1,24 +1,24 @@
 package model.history;
 
+import model.account.Amount;
 import model.operations.Operation;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Statement {
 
-    private final BigDecimal balance;
+    private final Amount balance;
     private final Operation operation;
     private final LocalDateTime operationDate;
 
-    public Statement(BigDecimal balance, Operation operation, LocalDateTime operationDate) {
+    public Statement(Amount balance, Operation operation, LocalDateTime operationDate) {
         this.balance = balance;
         this.operation = operation;
         this.operationDate = operationDate;
     }
 
-    public BigDecimal getBalance() {
+    public Amount getBalance() {
         return balance;
     }
 
