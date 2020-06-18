@@ -2,6 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Account {
@@ -11,6 +12,11 @@ public class Account {
     public Account(BigDecimal balance, List<Statement> operationsHistory) {
         this.balance = balance;
         this.operationsHistory = operationsHistory;
+    }
+
+    public Account(BigDecimal balance) {
+        this.balance = balance;
+        this.operationsHistory = new ArrayList<>();
     }
 
     public void deposit(BigDecimal depositAmount, LocalDateTime depositDate) {

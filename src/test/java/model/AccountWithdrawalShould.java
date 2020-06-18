@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 
 import static java.math.BigDecimal.*;
 import static java.time.LocalDateTime.now;
@@ -17,7 +16,7 @@ public class AccountWithdrawalShould {
 
     @BeforeEach
     public void init() {
-        account = new Account(TEN, new ArrayList<>());
+        account = new Account(TEN);
         withdrawalAmount = valueOf(1.25);
     }
 

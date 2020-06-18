@@ -17,8 +17,8 @@ public class AccountHistoryShould {
     private final LocalDateTime now = now();
 
     @Test
-    void print() {
-        Account account = new Account(TEN, new ArrayList<>());
+    void print_a_new_account() {
+        Account account = new Account(TEN);
         BigDecimal depositAmount = valueOf(1.25);
         BigDecimal withdrawalAmount = valueOf(2.99);
 
@@ -31,4 +31,14 @@ public class AccountHistoryShould {
 
         assertThat(account.getOperationsHistory()).isEqualTo(expected);
     }
+
+/*    @Test
+    public void print_an_existing_account() {
+        BigDecimal withdrawalAmount = valueOf(2.99);
+        ArrayList<Statement> previousOperations = new ArrayList<>();
+        previousOperations.add(new Statement(TEN, new Withdrawal(withdrawalAmount), now));
+        Account account = new Account(TEN, previousOperations);
+
+
+    }*/
 }
