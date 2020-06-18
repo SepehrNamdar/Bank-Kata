@@ -1,40 +1,43 @@
-package model;
+package use_case;
 
+import model.Account;
+import model.operations.NegativeOrZeroOperationException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
 
 import static java.math.BigDecimal.*;
+import static java.time.LocalDateTime.now;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-class AccountDepositShould {
+public class AccountWithdrawalShould {
     private Account account;
-    private BigDecimal depositAmount;
+    private BigDecimal withdrawalAmount;
 
     @BeforeEach
     public void init() {
         account = new Account(TEN);
-        depositAmount = valueOf(1.25);
+        withdrawalAmount = valueOf(1.25);
     }
 
     @Test
-    void increase_balance() {
-        account.deposit(depositAmount);
+    void decrease_balance() {
+        account.withdrawal(withdrawalAmount, now());
 
-        assertThat(account.getBalance()).isEqualTo(TEN.add(depositAmount));
+        assertThat(account.getBalance()).isEqualTo(TEN.subtract(withdrawalAmount));
     }
 
     @Test
     void be_refused_for_a_negative_amount() {
         assertThatExceptionOfType(NegativeOrZeroOperationException.class)
-                .isThrownBy(() -> account.deposit(depositAmount.negate()));
+                .isThrownBy(() -> account.withdrawal(withdrawalAmount.negate(), now()));
     }
 
     @Test
     void be_refused_for_a_zero_amount() {
         assertThatExceptionOfType(NegativeOrZeroOperationException.class)
-                .isThrownBy(() -> account.deposit(ZERO));
+                .isThrownBy(() -> account.withdrawal(ZERO, now()));
     }
 }
