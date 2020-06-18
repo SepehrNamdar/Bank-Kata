@@ -1,5 +1,9 @@
-package model;
+package use_case;
 
+import model.Account;
+import model.Deposit;
+import model.Statement;
+import model.Withdrawal;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;

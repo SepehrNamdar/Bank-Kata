@@ -2,9 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 
-import static model.OperationType.WITHDRAWAL;
-
-class Withdrawal extends Operation {
+public class Withdrawal extends Operation {
 
     public Withdrawal(BigDecimal withdrawalAmount) {
         super(withdrawalAmount);
@@ -17,6 +15,6 @@ class Withdrawal extends Operation {
 
     @Override
     public void setOperationType() {
-        super.operationType = WITHDRAWAL;
+        super.operationType = OperationType.WITHDRAWAL;
     }
 }

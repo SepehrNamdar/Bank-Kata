@@ -2,9 +2,7 @@ package model;
 
 import java.math.BigDecimal;
 
-import static model.OperationType.DEPOSIT;
-
-class Deposit extends Operation {
+public class Deposit extends Operation {
 
     public Deposit(BigDecimal depositAmount) {
         super(depositAmount);
@@ -17,6 +15,6 @@ class Deposit extends Operation {
 
     @Override
     public void setOperationType() {
-        super.operationType = DEPOSIT;
+        super.operationType = OperationType.DEPOSIT;
     }
 }

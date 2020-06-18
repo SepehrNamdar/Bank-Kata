@@ -1,6 +1,6 @@
 package model;
 
-public enum OperationType {
+enum OperationType {
     WITHDRAWAL,
     DEPOSIT,
     UNDEFINED

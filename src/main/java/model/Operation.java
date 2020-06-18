@@ -4,12 +4,11 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 import static java.math.BigDecimal.ZERO;
-import static model.OperationType.UNDEFINED;
 
 abstract class Operation {
 
     protected final BigDecimal operationAmount;
-    protected OperationType operationType = UNDEFINED;
+    protected OperationType operationType = OperationType.UNDEFINED;
 
     public Operation(BigDecimal operationAmount) {
         if (operationAmount.compareTo(ZERO) <= 0) {
